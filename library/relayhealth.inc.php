@@ -86,6 +86,42 @@ class MessageNotFoundFault {
   public $Code;
 }
 
+class ViewRenewals {
+  // string
+  public $partnerUserId;
+}
+
+class ViewRenewalsResponse {
+  // string
+  public $Url;
+}
+
+class StartPrescription {
+  // string
+  public $partnerUserId;
+  public $identifierType;   // mrn
+  public $patientId; // pubpid
+  public $assigningAuthority;  // guid set by vei for the provider (ssi_relayhelath or provider id) ?
+}
+
+class StartPrescriptionResponse {
+  // string
+  public $Url;
+}
+
+
+
+class CountMessages {
+  // List<string>
+  public $UserIds;
+  public $UserId;
+}
+
+class MessageCountResponse {
+  // List<string>
+  public $MessageCount;
+}
+
 class ComposePatientMessage {
   // string
   public $partnerUserId;
@@ -158,6 +194,12 @@ $classmap = array(
   "SecurityViolationFault" => "SecurityViolationFault",
   "PartnerAccessViolationFault" => "PartnerAccessViolationFault",
   "NoRelationshipBetweenProviderAndPracticeFault" => "NoRelationshipBetweenProviderAndPracticeFault",
-  "PracticeNotFoundFault" => "PracticeNotFoundFault"
+  "PracticeNotFoundFault" => "PracticeNotFoundFault",
+  "ViewRenewals" => "ViewRenewals",
+  "StartPrescription" => "StartPrescription",
+  "StartPrescriptionResponse" => "StartPrescriptionResponse",
+  "CountMessages" => "CountMessages",
+  "MessageCountResponse" => "MessageCountResponse"
 );
+
 ?>

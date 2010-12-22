@@ -37,6 +37,7 @@ class Installer
 
     // Record names of sql table files
     $this->main_sql = dirname(__FILE__) . '/../../sql/database.sql';
+    $this->eprescribing_sql = dirname(__FILE__) . '/../../sql/eprescribing_upgrade.sql';
     $this->translation_sql = dirname(__FILE__) . '/../../contrib/util/language_translations/currentLanguage_utf8.sql';
     $this->ippf_sql = dirname(__FILE__) . "/../../sql/ippf_layout.sql";
     $this->icd9 = dirname(__FILE__) . "/../../sql/icd9.sql";
@@ -442,6 +443,7 @@ $config = 1; /////////////
       $this->dumpfiles = array( $this->get_backup_filename() => 'clone database' );
     } else {
       $dumpfiles = array( $this->main_sql => 'Main',
+                          $this->eprescribing_sql => "E-Prescribing", 
                           $this->translation_sql => "Language Translation (utf8)" );
       if ($this->ippf_specific) {
         $dumpfiles[ $this->ippf_sql ] = "IPPF Layout";

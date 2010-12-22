@@ -50,6 +50,10 @@ while ($frow = sqlFetchArray($fres)) {
 updatePatientData($pid, $newdata['patient_data']);
 updateEmployerData($pid, $newdata['employer_data']);
 
+if( $GLOBALS['rh_patient'] ) {
+  require_once("$srcdir/outbox.inc");
+  queueMessage('ADT', $pid);
+}
 $i1dob = fixDate(formData("i1subscriber_DOB"));
 $i1date = fixDate(formData("i1effective_date"), date('Y-m-d'));
 

@@ -129,4 +129,10 @@ function deletePnote($id)
   sqlStatement("UPDATE pnotes SET deleted = '1' WHERE id=?", array($id) );
   return true;
 }
+
+function deleteEnote($id)
+{
+  sqlStatement("DELETE FROM pnotes WHERE id='$id'");
+  return true;
+}
 ?>

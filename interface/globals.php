@@ -465,4 +465,49 @@ if (version_compare(phpversion(), "5.2.1", ">=")) {
 ini_set("session.bug_compat_warn","off");
 
 //////////////////////////////////////////////////////////////////
+
+// ############### begin NDC global settings - National Drug Code Directory ############### //
+$GLOBALS['ndc_directory_enabled'] = FALSE;     // enable the NDC link to NDC control view and NDC link to lookup
+$GLOBALS['ndc_lookup_enabled']    = FALSE;     // enable the NDC drug lookup functionality for issues for medictions and drug allergies
+$GLOBALS['ndc_options_enabled']   = FALSE;     // force issues to use NDC drug attributes/sig for medictions and drug allergies
+
+// the ndc_zip_url is the actual location of the zip that will be downloaded
+$GLOBALS['ndc_zip_url'] = 'http://www.fda.gov/downloads/Drugs/DevelopmentApprovalProcess/UCM070838.zip';
+// if the ndc_zip_url is not given, the following urls and link titles
+// are used to scrape the fda website to find the location of the zip
+$GLOBALS['ndc_fdadrugs_url'] = 'http://www.fda.gov/Drugs/default.htm';
+$GLOBALS['ndc_page_url']     = 'http://www.fda.gov/Drugs/InformationOnDrugs/ucm142438.htm';
+$GLOBALS['ndc_page_title']   = 'National Drug Code Directory';
+$GLOBALS['ndc_zip_title']    = 'NDC Database File (Zip Format)';
+// ############### end NDC global settings ############### //
+
+// ############### begin PHYAURA global settings ############### //
+$GLOBALS['css_eprescribing'] = "$rootdir/themes/style_eprescribing.css";
+// ------------ set booleans to turn on/off services ------------- //
+// !!! rh_api requires $_SESSION['rh_api_id'] set in library/auth.inc !!! //
+$GLOBALS['rh_api']      = FALSE;   // SOAP API - set FALSE if using soap calls on Left Nav menu with RelayHealth
+$GLOBALS['rh_escripts'] = FALSE;   // eScripts - set TRUE if using e-prescribing with RelayHealth
+$GLOBALS['rh_patient']  = FALSE;   // Outbound Patient ADT (New and Update) - set TRUE if sending
+$GLOBALS['rh_summary']  = FALSE;   // Outbound Patient/medication CCD (New and Update) - set TRUE if sending
+$GLOBALS['rh_enotes']   = FALSE;   // eNotes - set TRUE if receiving e-notes (HL7/MDM) from RelayHealth
+
+// eNotes - Activate which enotes you want to receive
+// Add the code for the enote description below seperated by commas
+// used with rh_enotes, table e_types, and list_options message_type
+$GLOBALS['rh_allow_enotes'] = "NT,MD";  // string - NT,MD
+
+// ------------- API and PHYDEE credentials ------------- //
+$GLOBALS['phydee']     = "";
+$GLOBALS['phydee_key'] = "";
+// ------------- processing ssi and hl7 credentials ------------- //
+$GLOBALS['rh_api_env']                  = "P";  // env codes T->Test P->Prod
+$GLOBALS['rh_api_aaid']                 = "";
+$GLOBALS['RHApplicationName']           = "";
+$GLOBALS['RHApplicationPassword']       = "";
+$GLOBALS['RHPartnerName']               = "";
+$GLOBALS['RHssilocation']               = "";
+$GLOBALS['RHssiwsdl']                   = "";
+$GLOBALS['RHmsglocation']               = "";
+$GLOBALS['RHmsgwsdl']                   = "";
+// ############### end PHYAURA global settings ############### //
 ?>

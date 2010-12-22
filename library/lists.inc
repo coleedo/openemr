@@ -2,6 +2,7 @@
 require_once("{$GLOBALS['srcdir']}/sql.inc");
 
 if (!empty($GLOBALS['ippf_specific'])) {
+    if( $GLOBALS['rh_escripts'] ) {
   $ISSUE_TYPES = array(
     // table type               plural                 singular          abbrev style
     'medical_problem' => array(xl('Medical Problems'),xl('Problem')      ,xl('P'),0),
@@ -11,17 +12,41 @@ if (!empty($GLOBALS['ippf_specific'])) {
     'ippf_gcac'       => array(xl('Abortions')       ,xl('Abortion')     ,xl('A'),3),
     'contraceptive'   => array(xl('Contraception')   ,xl('Contraception'),xl('C'),4),
 //  'ippf_srh'        => array(xl('SRH')             ,xl('SRH')          ,xl('R'),5),
-  );
+        'escript'      => array(xl('E-scripts')     , xl('E-script')   , xl('E'),  0),
+      );
+    }else{
+      $ISSUE_TYPES = array(
+        // table type               plural              singular      abbrev style
+    'medical_problem' => array(xl('Medical Problems'),xl('Problem')      ,xl('P'),0),
+    'allergy'         => array(xl('Allergies')       ,xl('Allergy')      ,xl('Y'),0),
+    'medication'      => array(xl('Medications')     ,xl('Medication')   ,xl('M'),0),
+    'surgery'         => array(xl('Surgeries')       ,xl('Surgery')      ,xl('S'),0),
+    'ippf_gcac'       => array(xl('Abortions')       ,xl('Abortion')     ,xl('A'),3),
+    'contraceptive'   => array(xl('Contraception')   ,xl('Contraception'),xl('C'),4),
+//  'ippf_srh'        => array(xl('SRH')             ,xl('SRH')          ,xl('R'),5),
+      );
+  }
 }
 else if (!empty($GLOBALS['athletic_team'])) {
+    if( $GLOBALS['rh_escripts'] ) {
   $ISSUE_TYPES = array(
     'football_injury' => array(xl('Football Injuries'),xl('Injury') ,xl('I'),2),
     'medical_problem' => array(xl('Medical Problems') ,xl('Problem'),xl('P'),0),
     'allergy'         => array(xl('Allergies')        ,xl('Allergy'),xl('A'),1),
     'general'         => array(xl('General')          ,xl('General'),xl('G'),1),
+            'escript'         => array(xl('E-scripts')        ,xl('E-script'),xl('E'),0),
   );
+    }else{
+	  $ISSUE_TYPES = array(
+    'football_injury' => array(xl('Football Injuries'),xl('Injury') ,xl('I'),2),
+    'medical_problem' => array(xl('Medical Problems') ,xl('Problem'),xl('P'),0),
+    'allergy'         => array(xl('Allergies')        ,xl('Allergy'),xl('A'),1),
+    'general'         => array(xl('General')          ,xl('General'),xl('G'),1),
+	  );
+    }
 }
 else { // default version
+    if( $GLOBALS['rh_escripts'] ) {
   $ISSUE_TYPES = array(
     // table type                plural                 singular    abbrev style
     'medical_problem' => array(xl('Medical Problems'),xl('Problem')   ,xl('P'),0),
@@ -29,6 +54,7 @@ else { // default version
     'medication'      => array(xl('Medications')     ,xl('Medication'),xl('M'),0),
     'surgery'         => array(xl('Surgeries')       ,xl('Surgery')   ,xl('S'),0),
     'dental'          => array(xl('Dental Issues')   ,xl('Dental')    ,xl('D'),0),
+            'escript'         => array('E-scripts'     , 'E-script', 'E',  0),
     //
     // Styles are:
     // 0 - Normal, as in 2.8.1.
@@ -37,7 +63,25 @@ else { // default version
     //     Internally we'll still use a null end date to indicate active.
     // 2 - Football Injury.
     //
-  );
+          );
+    }else{
+          $ISSUE_TYPES = array(
+            // table type               plural              singular    abbrev style
+    'medical_problem' => array(xl('Medical Problems'),xl('Problem')   ,xl('P'),0),
+    'allergy'         => array(xl('Allergies')       ,xl('Allergy')   ,xl('A'),0),
+    'medication'      => array(xl('Medications')     ,xl('Medication'),xl('M'),0),
+    'surgery'         => array(xl('Surgeries')       ,xl('Surgery')   ,xl('S'),0),
+    'dental'          => array(xl('Dental Issues')   ,xl('Dental')    ,xl('D'),0),
+            //
+            // Styles are:
+            // 0 - Normal, as in 2.8.1.
+            // 1 - Simplified: only title, start date, comments and an Active checkbox;
+            //     no diagnosis, occurrence, end date, referred-by or sports fields.
+            //     Internally we'll still use a null end date to indicate active.
+            // 2 - Football Injury.
+            //
+          );
+  }
 }
 
 //

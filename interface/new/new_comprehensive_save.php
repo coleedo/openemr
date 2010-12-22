@@ -179,6 +179,10 @@ newInsuranceData(
   $i3date,
   formData('i3accept_assignment')
 );
+if( $GLOBALS['rh_patient'] ) {
+  require_once("$srcdir/outbox.inc");
+  queueMessage('ADT', $pid);
+}
 ?>
 <html>
 <body>

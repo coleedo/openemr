@@ -47,7 +47,7 @@ function refreshIssue(issue, title) {
 
 function dopclick(id) {
     <?php if ($thisauth == 'write'): ?>
-    dlgopen('add_edit_issue.php?issue=' + id, '_blank', 550, 400);
+    dlgopen('add_edit_issue.php?issue=' + id, '_blank', 600, 500);
     <?php else: ?>
     alert("<?php xl('You are not authorized to add/edit issues','e'); ?>");
     <?php endif; ?>
@@ -55,7 +55,7 @@ function dopclick(id) {
 
 // Process click on number of encounters.
 function doeclick(id) {
-    dlgopen('../problem_encounter.php?issue=' + id, '_blank', 550, 400);
+    dlgopen('../problem_encounter.php?issue=' + id, '_blank', 700, 500);
 }
 
 // Add Encounter button is clicked.
@@ -125,6 +125,15 @@ while ($row = sqlFetchArray($pres)) {
     $rowid = $row['id'];
 
     $disptitle = trim($row['title']) ? $row['title'] : "[Missing Title]";
+    $comments = "";
+
+    if( $row['type'] != "allergy" && $row['type'] != "medication" ) {
+        $comments = $row['comments'];
+    }elseif( $GLOBALS['ndc_options_enabled'] && $row['type'] == "medication" ) {
+        $comments = stristr($row['comments'],"Take");
+    }elseif( $row['type'] == "medication" ) {
+        $comments = $row['comments'];
+    }
 
     $ierow = sqlQuery("SELECT count(*) AS count FROM issue_encounter WHERE " .
       "list_id = $rowid");
@@ -159,7 +168,7 @@ while ($row = sqlFetchArray($pres)) {
     else {
         echo "  <td>" . $row['referredby'] . "</td>\n";
     }
-    echo "  <td>" . $row['comments'] . "</td>\n";
+    echo "  <td>" . $comments . "</td>\n";
     echo "  <td id='e_$rowid' class='noclick center' title='" . xl('View related encounters') . "'>";
     echo "  <input type='button' value='" . $ierow['count'] . "' class='editenc' id='".$rowid."' />";
     echo "  </td>";

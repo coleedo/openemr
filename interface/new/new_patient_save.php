@@ -118,6 +118,10 @@ if ($_POST['form_create']) {
   newInsuranceData($pid, "secondary");
   newInsuranceData($pid, "tertiary");
 
+if( $GLOBALS['rh_patient'] ) {
+  require_once("$srcdir/outbox.inc");
+  queueMessage('ADT', $pid);
+}
   // Set referral source separately because we don't want it messed
   // with later by newPatientData().
   if ($refsource = trim($_POST["refsource"])) {

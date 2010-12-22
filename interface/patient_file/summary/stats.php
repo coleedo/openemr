@@ -58,13 +58,20 @@ foreach ($ISSUE_TYPES as $key => $arr) {
 
     if (sqlNumRows($pres) > 0 || $ix == 0 || $key == "allergy") {
 
+        if( trim($arr[0]) == 'E-scripts' )
+        {
+            $issue_link = "escripts.php";
+        }else{
+            $issue_link = "stats_full.php?active=all";
+        }
+
 	if ($_POST['embeddedScreen']) {
 	    echo "<tr><td>";
             // Issues expand collapse widget
             $widgetTitle = $arr[0];
             $widgetLabel = $key;
             $widgetButtonLabel = xl("Edit");
-            $widgetButtonLink = "load_location(\"stats_full.php?active=all\")";
+            $widgetButtonLink = "load_location(\"" . $issue_link . "\")";
             $widgetButtonClass = "";
             $linkMethod = "javascript";
             $bodyClass = "summary_item small";
@@ -76,7 +83,7 @@ foreach ($ISSUE_TYPES as $key => $arr) {
             <tr class='issuetitle'>
             <td colspan='$numcols'>
             <span class="text"><b><?php echo htmlspecialchars($arr[0],ENT_NOQUOTES); ?></b></span>
-            <a href="javascript:;" class="small" onclick="load_location('stats_full.php?active=all')">
+            <a href="javascript:;" class="small" onclick="load_location(<?php echo $issue_link; ?>)">
             (<b><?php echo htmlspecialchars(xl('Manage'),ENT_NOQUOTES); ?></b>)
             </a>
             </td>
