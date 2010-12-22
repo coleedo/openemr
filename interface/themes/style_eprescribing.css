@@ -1,0 +1,114 @@
+body {
+    margin: 0px 0px 0px 2px;
+    /* set the base font and size for all DOM children */
+    font-family: sans-serif;
+    font-size: 1em;  /* set the base font size for all DOM children */
+}
+
+a {
+  color: #0000cc;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #0000cc;
+}
+
+a:hover {
+  color: #ff5555;
+}
+
+td {
+    vertical-align:Top;
+    font-size:8pt;
+    font-family:helvetica;
+}
+input {
+    font-size:8pt;
+    font-family:helvetica;
+}
+select {
+    font-size:8pt;
+    font-family:helvetica;
+}
+textarea {
+    font-size:8pt;
+    font-family:helvetica;
+}
+div.escript {
+    vertical-align:Top;
+}
+div.escript table {
+    vertical-align:Top;
+    horizontal-align:Center;
+}
+div.escript td {
+    vertical-align:Top;
+    horizontal-align:Center;
+}
+div.header {
+    margin:0px;
+    padding:3px;
+    text-align:Left;
+    background:#fff;
+    border:solid 1px #c3c3c3;
+    font-size:10pt;
+    font-family:helvetica;
+}
+div.escript_list,#list_heading {
+    margin:0px;
+    width:394px;
+    padding:4px;
+    horizontal-align:Center;
+    vertical-align:Top;
+    text-align:Left;
+    background:#fff;
+    border-top:solid 1px #c3c3c3;
+    border-left:solid 1px #c3c3c3;
+    border-right:solid 1px #c3c3c3;
+    font-size:10pt;
+    font-family:helvetica;
+}
+div.escript_list {
+    background:#ffd;
+    vertical-align:Top;
+    horizontal-align:Center;
+    height:257px;
+    border-bottom:solid 1px #c3c3c3;
+}
+div.escript_list tr {
+    background:#ddd;
+    font-size:9pt;
+    font-family:helvetica;
+}
+.escript_list tr {
+    background:#ddd;
+    font-size:9pt;
+    font-family:helvetica;
+}
+.escript_list_alt tr {
+    background:#fff;
+    font-size:9pt;
+    font-family:helvetica;
+}
+div.escript_list_head tr {
+    background:#ddd;
+    vertical-align:Top;
+    padding-top:2px;
+    padding-bottom:2px;
+    padding-left:6px;
+    padding-right:6px;
+    font-size:9pt;
+    font-family:helvetica;
+}
+div.escript_list td {
+    border-top: 1px solid #ddd;
+    background:#fff;
+    vertical-align:Top;
+    padding-top:2px;
+    padding-bottom:2px;
+    padding-left:6px;
+    padding-right:6px;
+    font-size:9pt;
+    font-family:helvetica;
+}
